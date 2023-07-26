@@ -34,31 +34,36 @@ namespace bind
             BindingSymbol.Format += serchCHAR;
         }
         private void serchNUMBER(object sender, ConvertEventArgs e) {
+            string res = string.Empty;
             Regex regNUm = new Regex(@"\d+");
             MatchCollection match = regNUm.Matches(e.Value.ToString());
             foreach (Match m in match)
             {
-                e.Value = m.Value;
+                res += m.Value;
             }
+            e.Value = res;
         }
         private void serchSTRING(object sender, ConvertEventArgs e)
         {
+            string res = string.Empty;
             Regex regSTR = new Regex(@"[A-Za-z]+");
             MatchCollection match = regSTR.Matches(e.Value.ToString());
             foreach (Match m in match)
             {
-                e.Value = m.Value;
+                res += m.Value;
             }
-
+            e.Value= res;
         }
         private void serchCHAR(object sender, ConvertEventArgs e)
         {
+            string res = string.Empty;
             Regex regCH = new Regex(@"[.,!@#$%^&*?;:]+");
             MatchCollection match = regCH.Matches(e.Value.ToString());
             foreach (Match m in match)
             {
-                e.Value =  m.Value;
+                res += m.Value;
             }
+            e.Value = res;
 
         }
 
